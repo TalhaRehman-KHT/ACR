@@ -8,6 +8,6 @@ secretaryRouter.get("/dashboard", protect, authorizedRole("secretary"), secretar
 
 secretaryRouter.post('/createUser', protect, authorizedRole('secretary'), createUser)
 secretaryRouter.put('/update/:id', protect, authorizedRole('secretary'), updateUser)
-secretaryRouter.delete('/update/:id', protect, authorizedRole('secretary'), deleteUser)
+secretaryRouter.delete('/delete/:id', protect, authorizedRole('secretary'), deleteUser)
 
 export default secretaryRouter;
