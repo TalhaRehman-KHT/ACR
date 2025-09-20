@@ -1,13 +1,13 @@
 import express from "express";
 import { authorizedRole, protect } from "../middlewares/authorizedRole.js";
 import { secretaryDashboard } from "../controllers/secretaryController.js";
-const secretaryrouter = express.Router();
+import { createUser, deleteUser, updateUser } from "../controllers/userController.js";
+const secretaryRouter = express.Router();
 
-secretaryrouter.get(
-    "/dashboard",
-    protect,
-    authorizedRole("secretary"),
-    secretaryDashboard
-);
+secretaryRouter.get("/dashboard", protect, authorizedRole("secretary"), secretaryDashboard);
 
-export default secretaryrouter;
+secretaryRouter.post('/createUser', protect, authorizedRole('secretary'), createUser)
+secretaryRouter.put('/update/:id', protect, authorizedRole('secretary'), updateUser)
+secretaryRouter.delete('/update/:id', protect, authorizedRole('secretary'), deleteUser)
+
+export default secretaryRouter;

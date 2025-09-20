@@ -11,8 +11,9 @@ import employeeRouter from './routes/employeeRoutes.js';
 import reportingRouter from './routes/reportingRoutes.js';
 import psbRouter from './routes/psbRoutes.js';
 import directorRouter from './routes/directorRoutes.js';
-import secretaryrouter from './routes/secretaryRoutes.js';
+
 import superAdminRouter from './routes/superAdminRoutes.js';
+import secretaryRouter from './routes/secretaryRoutes.js';
 
 const PORT = process.env.PORT || 5000;
 
@@ -41,7 +42,7 @@ app.use('/api/v1/employee', employeeRouter)
 app.use('/api/v1/reporting', reportingRouter)
 app.use('/api/v1/director', directorRouter)
 app.use('/api/v1/psb', psbRouter)
-app.use('/api/v1/secretary', secretaryrouter)
+app.use('/api/v1/secretary', secretaryRouter)
 app.use('/api/v1/superadmin', superAdminRouter)
 
 export default app;
