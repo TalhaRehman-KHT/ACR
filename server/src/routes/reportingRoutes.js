@@ -7,11 +7,6 @@ import { reportingDashboard } from "../controllers/reportingController.js";
 
 const reportingRouter = express.Router();
 
-reportingRouter.get(
-    "/dashboard",
-    protect,
-    authorizedRole("reporting_officer"),
-    reportingDashboard
-);
+reportingRouter.get("/dashboard", protect, authorizedRole("reporting_officer"), reportingDashboard);
 
 export default reportingRouter;

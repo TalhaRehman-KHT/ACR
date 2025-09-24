@@ -6,11 +6,6 @@ import { employeeDashboard } from "../controllers/employeeController.js";
 
 const employeeRouter = express.Router();
 
-employeeRouter.get(
-    "/dashboard",
-    protect,
-    authorizedRole("employee"),
-    employeeDashboard
-);
+employeeRouter.get("/dashboard", protect, authorizedRole("employee"), employeeDashboard);
 
 export default employeeRouter;

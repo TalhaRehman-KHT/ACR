@@ -3,7 +3,7 @@ import { generateToken } from "../../utils/generateToken.js";
 import { comparePassword, hashPassword } from "../../utils/hashPassword.js";
 import pool from "../config/db.js";
 
-// ✅ Only PSB, Secretary, SuperAdmin should create accounts
+// ✅ Only PSB,  should create accounts
 export const createUser = async (req, res) => {
     try {
         const { name, email, password, role } = req.body;
