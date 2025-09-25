@@ -1,1 +1,98 @@
 @import "tailwindcss";
+
+@theme {
+  --color-light-blue: oklch(0.92 0.04 230);
+  --color-dark-blue: oklch(0.35 0.08 250);
+  --color-fog-white: oklch(0.98 0.003 247.858);
+  --color-medium-blue: oklch(0.75 0.06 240);
+
+  --font-formal: "Georgia", "Times New Roman", serif;
+  --font-educational: "Calibri", "Arial", sans-serif;
+}
+
+/* ---------- Base Layer ---------- */
+@layer base {
+  body {
+    background-image: linear-gradient(to right,
+        var(--color-dark-blue),
+        var(--color-light-blue));
+    background-attachment: fixed;
+    font-family: var(--font-educational);
+    color: var(--color-dark-blue);
+  }
+
+  h2 {
+    @apply text-2xl font-bold mb-4;
+    font-family: var(--font-formal);
+    color: var(--color-fog-white);
+  }
+
+  h3 {
+    @apply text-xl font-semibold mb-3;
+    font-family: var(--font-formal);
+    color: var(--color-fog-white);
+  }
+
+  h4 {
+    @apply text-lg font-medium mb-2;
+    font-family: var(--font-formal);
+    color: var(--color-fog-white);
+  }
+
+  input,
+  select,
+  textarea {
+    @apply border border-gray-300 rounded-md p-2 transition focus:ring-2 focus:ring-blue-500 focus:border-blue-500;
+    font-family: var(--font-educational);
+  }
+
+  ::placeholder {
+    @apply italic opacity-70 text-gray-500;
+  }
+
+  ::selection {
+    background-color: var(--color-dark-blue);
+    color: var(--color-fog-white);
+  }
+}
+
+/* ---------- Components Layer ---------- */
+@layer components {
+  .card {
+    @apply bg-white rounded-lg p-6 shadow border;
+    border-color: var(--color-light-blue);
+  }
+
+  .btn-primary {
+    @apply w-full bg-blue-600 text-white py-2 rounded-md font-medium hover:bg-blue-700 transition;
+  }
+
+  .form-container {
+    @apply bg-white border border-gray-200 rounded-xl shadow-lg p-6;
+  }
+
+  .form-title {
+    @apply text-center text-2xl font-bold text-gray-800 mb-4;
+  }
+
+  .form-group {
+    @apply mb-4;
+  }
+
+  .form-label {
+    @apply block text-gray-700 font-medium mb-2;
+  }
+
+  .required::after {
+    content: " *";
+    color: #e53e3e;
+  }
+
+  .input-field {
+    @apply w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition;
+  }
+
+  .navbar {
+    @apply bg-gray-900 text-white flex justify-between items-center px-4 py-3 border-b;
+  }
+}
