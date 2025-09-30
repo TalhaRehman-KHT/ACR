@@ -5,29 +5,35 @@ import Navbar from './pages/Navbar.jsx'
 import Sidebar from './pages/Sidebar.jsx'
 import Login from './pages/Login.jsx'
 import Dashboard from './pages/Dashboard.jsx'
+import { useAuth } from './context/AuthContext.jsx'
+import Profile from "./pages/Profile.jsx";
+import Education from "./pages/Education.jsx";
+import Reports from "./pages/Reports.jsx";
+import AllEmployees from "./pages/AllEmployees.jsx";
+import AddEmployee from "./pages/AddEmployee.jsx";
+import AdminPanel from "./pages/AdminPanel.jsx";
 
 export default function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
-        {/* Navbar always visible */}
         <Navbar />
-
         <div className="flex">
-          {/* Sidebar only for logged-in users */}
           <Sidebar />
-
-          {/* Main Routes */}
           <main className="flex-1 p-4">
             <Routes>
-              {/* Default route → redirect to /dashboard */}
-              {/* <Route path="/" element={<Navigate to="/dashboard" />} /> */}
-
-              {/* Login Page */}
               <Route path="/login" element={<Login />} />
-
-              {/* Dashboard Page */}
-              <Route path="/dashboard" element={<Dashboard />} />
+              (user && (
+              <>
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/education" element={<Education />} />
+                <Route path="/reports" element={<Reports />} />
+                <Route path="/all-employees" element={<AllEmployees />} />
+                <Route path="/add-employee" element={<AddEmployee />} />
+                <Route path="/admin-panel" element={<AdminPanel />} />
+              </>
+              ))
             </Routes>
           </main>
         </div>

@@ -1,10 +1,15 @@
 // src/pages/Sidebar.jsx
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
-import { LogOut, User } from "lucide-react"; // ✅ import both
+import { LogOut, User } from "lucide-react";
 
 export default function Sidebar() {
     const { user, logout } = useAuth();
+
+    // Function to style active link
+    const linkClass = ({ isActive }) =>
+        `px-3 py-2 rounded transition ${isActive ? "bg-white text-black font-semibold" : "hover:bg-gray-700"
+        }`;
 
     return (
         <aside className="h-screen w-64 bg-gray-900 text-white flex flex-col shadow-lg mt-[-3px]">
@@ -16,33 +21,96 @@ export default function Sidebar() {
 
             {/* Navigation Links */}
             <nav className="flex flex-col gap-2 px-4 py-6 flex-grow">
-                <Link
-                    to="/dashboard"
-                    className="px-3 py-2 rounded hover:bg-gray-700 transition"
-                >
+                <NavLink to="/dashboard" className={linkClass}>
                     Dashboard
-                </Link>
+                </NavLink>
 
-                {/* Role-specific links */}
                 {user?.role === "employee" && (
-                    <Link to="/tasks" className="px-3 py-2 rounded hover:bg-gray-700">
-                        My Tasks
-                    </Link>
+                    <>
+                        <NavLink to="/profile" className={linkClass}>
+                            Profile
+                        </NavLink>
+                        <NavLink to="/education" className={linkClass}>
+                            Education
+                        </NavLink>
+                        <NavLink to="/annual-report" className={linkClass}>
+                            Annual Report
+                        </NavLink>
+                    </>
                 )}
+
+                {user?.role === "reporting_officer" && (
+                    <>
+                        <NavLink to="/profile" className={linkClass}>
+                            Profile
+                        </NavLink>
+                        <NavLink to="/education" className={linkClass}>
+                            Education
+                        </NavLink>
+                        <NavLink to="/reports" className={linkClass}>
+                            Reports
+                        </NavLink>
+                    </>
+                )}
+
                 {user?.role === "psb" && (
-                    <Link to="/manage-users" className="px-3 py-2 rounded hover:bg-gray-700">
-                        Manage Users
-                    </Link>
+                    <>
+                        <NavLink to="/profile" className={linkClass}>
+                            Profile
+                        </NavLink>
+                        <NavLink to="/education" className={linkClass}>
+                            Education
+                        </NavLink>
+                        <NavLink to="/reports" className={linkClass}>
+                            Reports
+                        </NavLink>
+                        <NavLink to="/all-employees" className={linkClass}>
+                            All Employees
+                        </NavLink>
+                    </>
                 )}
+
                 {user?.role === "secretary" && (
-                    <Link to="/reports" className="px-3 py-2 rounded hover:bg-gray-700">
-                        Reports
-                    </Link>
+                    <>
+                        <NavLink to="/profile" className={linkClass}>
+                            Profile
+                        </NavLink>
+                        <NavLink to="/education" className={linkClass}>
+                            Education
+                        </NavLink>
+                        <NavLink to="/reports" className={linkClass}>
+                            Reports
+                        </NavLink>
+                        <NavLink to="/all-employees" className={linkClass}>
+                            All Employees
+                        </NavLink>
+                        <NavLink to="/add-employee" className={linkClass}>
+                            Add Employee
+                        </NavLink>
+                    </>
                 )}
+
                 {user?.role === "superadmin" && (
-                    <Link to="/admin-panel" className="px-3 py-2 rounded hover:bg-gray-700">
-                        Admin Panel
-                    </Link>
+                    <>
+                        <NavLink to="/profile" className={linkClass}>
+                            Profile
+                        </NavLink>
+                        <NavLink to="/education" className={linkClass}>
+                            Education
+                        </NavLink>
+                        <NavLink to="/reports" className={linkClass}>
+                            Reports
+                        </NavLink>
+                        <NavLink to="/all-employees" className={linkClass}>
+                            All Employees
+                        </NavLink>
+                        <NavLink to="/add-employee" className={linkClass}>
+                            Add Employee
+                        </NavLink>
+                        <NavLink to="/admin-panel" className={linkClass}>
+                            Admin Panel
+                        </NavLink>
+                    </>
                 )}
             </nav>
 

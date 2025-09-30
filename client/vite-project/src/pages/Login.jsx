@@ -26,8 +26,8 @@ const Login = () => {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100">
-            <form onSubmit={handleLogin} className="form-container w-96 space-y-5">
+        <div className="flex items-center justify-center  bg-transparent">
+            <form onSubmit={handleLogin} className="form-container w-96 space-y-5  ">
                 <h2 className="form-title">Login</h2>
 
                 {/* Email */}
@@ -36,7 +36,7 @@ const Login = () => {
                     <input
                         type="email"
                         placeholder="Enter your email"
-                        className="input-field"
+                        className="input-field text-white "
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
@@ -57,7 +57,7 @@ const Login = () => {
                 </div>
 
                 {/* Submit */}
-                <button type="submit" className="btn-primary">
+                <button type="submit" className="btn-secondary">
                     Login
                 </button>
             </form>
